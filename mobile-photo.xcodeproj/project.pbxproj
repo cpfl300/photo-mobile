@@ -21,6 +21,10 @@
 		45CF90B01853531A000569AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CF90921853531A000569AC /* UIKit.framework */; };
 		45CF90B81853531A000569AC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45CF90B61853531A000569AC /* InfoPlist.strings */; };
 		45CF90BA1853531A000569AC /* mobile_photoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CF90B91853531A000569AC /* mobile_photoTests.m */; };
+		45CF90C418536777000569AC /* pinkGradiation.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CF90C318536777000569AC /* pinkGradiation.png */; };
+		45CF90C61854A632000569AC /* chicken.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 45CF90C51854A632000569AC /* chicken.jpg */; };
+		45CF90CD1854CA90000569AC /* NSDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CF90CC1854CA90000569AC /* NSDataModel.m */; };
+		45CF90D91854CE37000569AC /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CF90D81854CE37000569AC /* RegisterController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,12 @@
 		45CF90B51853531A000569AC /* mobile-photoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "mobile-photoTests-Info.plist"; sourceTree = "<group>"; };
 		45CF90B71853531A000569AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		45CF90B91853531A000569AC /* mobile_photoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mobile_photoTests.m; sourceTree = "<group>"; };
+		45CF90C318536777000569AC /* pinkGradiation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinkGradiation.png; sourceTree = "<group>"; };
+		45CF90C51854A632000569AC /* chicken.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chicken.jpg; sourceTree = "<group>"; };
+		45CF90CB1854CA90000569AC /* NSDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataModel.h; sourceTree = "<group>"; };
+		45CF90CC1854CA90000569AC /* NSDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataModel.m; sourceTree = "<group>"; };
+		45CF90D71854CE37000569AC /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
+		45CF90D81854CE37000569AC /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,9 +122,14 @@
 		45CF90941853531A000569AC /* mobile-photo */ = {
 			isa = PBXGroup;
 			children = (
+				45CF90C71854A643000569AC /* images */,
 				45CF909D1853531A000569AC /* AppDelegate.h */,
 				45CF909E1853531A000569AC /* AppDelegate.m */,
 				45CF90A01853531A000569AC /* Main.storyboard */,
+				45CF90D71854CE37000569AC /* RegisterController.h */,
+				45CF90D81854CE37000569AC /* RegisterController.m */,
+				45CF90CB1854CA90000569AC /* NSDataModel.h */,
+				45CF90CC1854CA90000569AC /* NSDataModel.m */,
 				45CF90A31853531A000569AC /* ViewController.h */,
 				45CF90A41853531A000569AC /* ViewController.m */,
 				45CF90A61853531A000569AC /* Images.xcassets */,
@@ -150,6 +165,15 @@
 				45CF90B61853531A000569AC /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		45CF90C71854A643000569AC /* images */ = {
+			isa = PBXGroup;
+			children = (
+				45CF90C51854A632000569AC /* chicken.jpg */,
+				45CF90C318536777000569AC /* pinkGradiation.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,8 +253,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				45CF90A71853531A000569AC /* Images.xcassets in Resources */,
+				45CF90C418536777000569AC /* pinkGradiation.png in Resources */,
 				45CF90991853531A000569AC /* InfoPlist.strings in Resources */,
 				45CF90A21853531A000569AC /* Main.storyboard in Resources */,
+				45CF90C61854A632000569AC /* chicken.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,9 +275,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45CF90CD1854CA90000569AC /* NSDataModel.m in Sources */,
 				45CF90A51853531A000569AC /* ViewController.m in Sources */,
 				45CF909F1853531A000569AC /* AppDelegate.m in Sources */,
 				45CF909B1853531A000569AC /* main.m in Sources */,
+				45CF90D91854CE37000569AC /* RegisterController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +490,7 @@
 				45CF90BF1853531A000569AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		45CF90C01853531A000569AC /* Build configuration list for PBXNativeTarget "mobile-photoTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +499,7 @@
 				45CF90C21853531A000569AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
