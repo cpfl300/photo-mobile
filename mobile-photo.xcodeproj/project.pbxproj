@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4501386318727B96004F6798 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4501386218727B96004F6798 /* AssetsLibrary.framework */; };
 		456E5A3818616F760044592A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 456E5A3718616F760044592A /* MobileCoreServices.framework */; };
 		456E5A88186182280044592A /* CLImageEditor.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 456E5A3A186182270044592A /* CLImageEditor.bundle */; };
 		456E5A89186182280044592A /* CLImageEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 456E5A3C186182270044592A /* CLImageEditor.m */; };
@@ -84,6 +85,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4501386218727B96004F6798 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		456E5A3718616F760044592A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		456E5A3A186182270044592A /* CLImageEditor.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CLImageEditor.bundle; sourceTree = "<group>"; };
 		456E5A3B186182270044592A /* CLImageEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLImageEditor.h; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4501386318727B96004F6798 /* AssetsLibrary.framework in Frameworks */,
 				456E5A3818616F760044592A /* MobileCoreServices.framework in Frameworks */,
 				45CF90911853531A000569AC /* CoreGraphics.framework in Frameworks */,
 				45CF90931853531A000569AC /* UIKit.framework in Frameworks */,
@@ -440,6 +443,7 @@
 		45CF908D1853531A000569AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4501386218727B96004F6798 /* AssetsLibrary.framework */,
 				456E5A3718616F760044592A /* MobileCoreServices.framework */,
 				45CF908E1853531A000569AC /* Foundation.framework */,
 				45CF90901853531A000569AC /* CoreGraphics.framework */,
