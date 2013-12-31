@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "NSDataModel.h"
 
-@interface ViewController ()
+@interface ViewController ()<UITextFieldDelegate>
 
 @end
 
@@ -27,6 +27,37 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTap:)];
     [self.view addGestureRecognizer:tap];
 
+    // textFild delegate지정
+    _logInMail.delegate = self;
+    _logInPwd.delegate = self;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (textField == _logInMail) {
+        [UIView beginAnimations:@"MyAnimation" context:nil];
+        [UIView setAnimationDuration:0.3];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+        CGRect newframe = self.view.frame;
+        newframe.origin.y = -40;
+        self.view.frame = newframe;
+        [UIView commitAnimations];
+    }
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    if (textField == _logInPwd) {
+        [UIView beginAnimations:@"MyAnimation" context:nil];
+        [UIView setAnimationDuration:0.3];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+        CGRect newframe = self.view.frame;
+        newframe.origin.y = 0;
+        self.view.frame = newframe;
+        [UIView commitAnimations];
+    }
+    return YES;
 }
 
 -(void)didTap:(UITapGestureRecognizer*)rec

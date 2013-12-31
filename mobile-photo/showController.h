@@ -12,5 +12,5 @@
 @property NSDictionary* selectedData;
 @property (weak, nonatomic) IBOutlet UILabel *subject;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
-
+@property (weak, nonatomic) IBOutlet UILabel *discribe;
 @end

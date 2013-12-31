@@ -14,5 +14,5 @@
 -(BOOL)authenticateEmail:(NSString*)email withPassword:(NSString*)password;
 -(NSDictionary*)objectAtIndex:(NSInteger)index;
 -(NSInteger)countData;
-
+-(void)sendpicture:(UIImage*)image Title:(NSString*)title withComment:(NSString*)comment;
 @end

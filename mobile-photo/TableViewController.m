@@ -11,8 +11,12 @@
 #import "showController.h"
 #import "NXMyCell.h"
 #import "UIImageView+WebCache.h"
+#import <MobileCoreServices/MobileCoreServices.h>
+#import "CLImageEditor.h"
+#import "NXWriteViewController.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
-@interface TableViewController ()
+@interface TableViewController ()<UIImagePickerControllerDelegate, CLImageEditorDelegate>
 
 @end
 
@@ -36,7 +40,68 @@
 	// Do any additional setup after loading the view.
     _dataModel = [[NSDataModel alloc]init];
     _dataModel.tableController = self; //_dataModel을 통해서 다시 그려주는 tableController로 접근해서 나(self)를 다시 그려달라고 함.
+    
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(newImage:)];
+    self.navigationItem.rightBarButtonItem = rightButton;
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+
+    _dataModel = [[NSDataModel alloc]init];
+    _dataModel.tableController = self;
+}
+
+- (void)newImage:(id)sender
+{
+    UIImagePickerController *picker
+    = [[UIImagePickerController alloc] init];
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.delegate = self;
+    [self.navigationController
+     presentViewController:picker animated:YES completion:^{}];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    
+    NSString *mediaType = [info objectForKey:
+                           UIImagePickerControllerMediaType];
+    
+    if ([mediaType isEqualToString:(__bridge id)kUTTypeImage])
+    {
+        UIImage* aImage = [info
+                           objectForKey:UIImagePickerControllerOriginalImage];
+        CLImageEditor *editor = [[CLImageEditor alloc] initWithImage:aImage];
+        editor.delegate = self;
+        [picker pushViewController:editor animated:YES];
+        
+//        UIAlertView *alertView1 = [[UIAlertView alloc]
+//                                   initWithTitle:@"이미지" message:@"골랐어요" delegate:self
+//                                   cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+//        alertView1.alertViewStyle = UIAlertViewStyleDefault;
+//        [alertView1 show];
+    }
+}
+
+- (void)imageEditor:(CLImageEditor *)editor
+didFinishEdittingWithImage:(UIImage *)image
+{
+    NXWriteViewController* writeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"forSend"];
+    [writeVC prepareData:image];
+    [editor dismissViewControllerAnimated:NO completion:nil];
+    [self.navigationController pushViewController:writeVC animated:NO];
+    
+    //[editor dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:^{}];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -55,10 +120,22 @@
     NSDictionary* item = [_dataModel objectAtIndex:indexPath.row];
     NXMyCell *cell = [tableView dequeueReusableCellWithIdentifier:
                       @"listCell"];
-    cell.imageTitle.text = [item objectForKey:@"content"];
-//    cell.imageDescribe.text = [item objectForKey:@"image"];
-    [cell.image setImageWithURL:[NSURL URLWithString:[item objectForKey:@"image"]]];
-//    cell.image.image = [UIImage imageNamed:[item objectForKey:@"image"]];
+    cell.imageTitle.text = [item objectForKey:@"title"];
+    cell.imageDescribe.text = [item objectForKey:@"comment"];
+    
+    if ([[item objectForKey:@"fileName"] class] != [NSNull class])
+    {
+        NSString *url=@"http://localhost:8080/images/";
+        url = [url stringByAppendingString:[item objectForKey:@"fileName"]];
+        [cell.image setImageWithURL:[NSURL URLWithString:url]];
+    }
+    else{
+        NSString *url = @"http://localhost:8080/images/noimage.png";
+        [cell.image setImageWithURL:[NSURL URLWithString:url]];
+    };
+    
+    
+//    cell.image.image = [UIImage imageNamed:[item objectForKey:@"fileName"]];
     
 //    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
 //    cell.textLabel.text = [item objectForKey:@"text"];
@@ -81,7 +158,8 @@
     destination.selectedData = [_dataModel objectAtIndex:indexpath.row];
 }
 
-
+-(IBAction)returnList:(UIStoryboardSegue*)segue{
+}
 
 
 @end

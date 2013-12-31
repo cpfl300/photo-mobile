@@ -27,8 +27,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.subject.text = _selectedData[@"content"];
-    [self.image setImageWithURL:[NSURL URLWithString:[_selectedData objectForKey:@"image"]]];
+    self.subject.text = _selectedData[@"title"];
+    
+    NSString *url=@"http://localhost:8080/images/";
+    if([[_selectedData objectForKey:@"fileName"] class] != [NSNull class]){
+        url = [url stringByAppendingString:[_selectedData objectForKey:@"fileName"]];
+    }else{
+        url = @"http://localhost:8080/images/noimage.png";
+    }
+    [self.image setImageWithURL:[NSURL URLWithString:url]];
+    self.discribe.text = _selectedData[@"comment"];
 //    self.image = [UIImage imageNamed:[_selectedData objectForKey:[@"image"]]];
 	// Do any additional setup after loading the view.
 }
